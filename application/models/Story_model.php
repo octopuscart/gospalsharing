@@ -22,8 +22,13 @@ class Story_model extends CI_Model {
         return $story;
     }
 
-    public function storyLanguageList() {
-        $lang_listquery = $this->db->select("*, '0' as 'active'")->order_by("is_default desc, display_index")->get("story_language");
+    public function storyLanguageList($filteractive = 0) {
+        $this->db->select("*, '0' as 'active'");
+        if($filteractive){
+            $this->db->where("is_active", "1");
+        }
+        $this->db->order_by("is_default desc, display_index");
+        $lang_listquery = $this->db->get("story_language");
         $lang_list = $lang_listquery ? $lang_listquery->result_array() : array();
         return $lang_list;
     }

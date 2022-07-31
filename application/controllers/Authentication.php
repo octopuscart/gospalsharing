@@ -14,7 +14,7 @@ class Authentication extends CI_Controller {
         $data['login_user'] = $this->session->userdata('logged_in');
         $userdata = $this->userdata;
         if ($userdata) {
-            redirect("Account/getCollection", "refresh");
+            redirect("Story/appViewStory", "refresh");
         } else {
             //        redirect("Authentication/index");
         }
