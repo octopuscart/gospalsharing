@@ -20,7 +20,7 @@
         );
         foreach ($styleSheetArray as $title => $stylesheet) {
             ?>
-                                                        <!-- ================== <?php echo $title ?> ================== -->
+                                                                        <!-- ================== <?php echo $title ?> ================== -->
             <link href="<?php echo base_url(); ?><?php echo $stylesheet; ?>" rel="stylesheet" />
             <?php
         }
@@ -50,10 +50,30 @@
             .card.disable {
                 opacity: 0.2;
             }
+
+            element.style {
+            }
+            @media (min-width: 768px){
+                #main-wrapper[data-layout=vertical][data-sidebar-position=fixed][data-sidebartype=full] .topbar .top-navbar .navbar-collapse, #main-wrapper[data-layout=vertical][data-sidebar-position=fixed][data-sidebartype=overlay] .topbar .top-navbar .navbar-collapse {
+                    margin-left: 250px;
+                }
+            }
+            #main-wrapper[data-layout=vertical] .topbar .navbar-collapse[data-navbarbg=skin3], #main-wrapper[data-layout=vertical] .topbar[data-navbarbg=skin3], #main-wrapper[data-layout=horizontal] .topbar .navbar-collapse[data-navbarbg=skin3], #main-wrapper[data-layout=horizontal] .topbar[data-navbarbg=skin3] {
+                background: #ba9248;
+            }
+            #main-wrapper[data-layout=vertical] .topbar .top-navbar .navbar-header[data-logobg=skin3], #main-wrapper[data-layout=horizontal] .topbar .top-navbar .navbar-header[data-logobg=skin3] {
+                background: #ba9248;
+            }
+            .sidebar-nav>ul>li.selected>a {
+                border-radius: 60px 0 0 60px;
+                background: #ba9248;
+                color: #fff;
+            }
+
         </style>
         <!--custom style-->
         <style>
-            <?php echo HEADERCSS; ?>
+<?php echo HEADERCSS; ?>
             span.display_index {
                 font-weight: bold;
                 font-size: 14px;
