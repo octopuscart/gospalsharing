@@ -7,15 +7,24 @@ if ($userdata) {
 }
 $menu_control = array();
 
-
-
 $order_menu = array(
-    "title" => "Collections",
+    "title" => "Story Images",
     "icon" => "icon-Receipt-4",
     "active" => "",
     "sub_menu" => array(
-        "Add Collection" => site_url("Account/addCollection"),
-        "Collections List" => site_url("Account/getCollection"),
+        "Add Story" => site_url("Story/addStory"),
+        "View Stories" => site_url("Story/appViewStory"),
+        "Add Image" => site_url("Story/addImage"),
+    ),
+);
+array_push($menu_control, $order_menu);
+
+$order_menu = array(
+    "title" => "Story Language",
+    "icon" => "mdi mdi-translate",
+    "active" => "",
+    "sub_menu" => array(
+        "Settings" => site_url("Story/languageSetting"),
     ),
 );
 array_push($menu_control, $order_menu);
@@ -31,13 +40,7 @@ $setting_menu = array(
     ),
 );
 
-
 array_push($menu_control, $setting_menu);
-
-
-
-
-
 
 foreach ($menu_control as $key => $value) {
     $submenu = $value['sub_menu'];
@@ -81,7 +84,7 @@ foreach ($menu_control as $key => $value) {
                 </li>
                 <!-- User Profile-->
 
-                <?php foreach ($menu_control as $mkey => $mvalue) { ?>
+<?php foreach ($menu_control as $mkey => $mvalue) { ?>
                     <li class="sidebar-item">
                         <a class="sidebar-link has-arrow waves-effect waves-dark <?php echo $mvalue['active']; ?>" href="javascript:void(0)" aria-expanded="false">
                             <i class="<?php echo $mvalue['icon']; ?>"></i>
@@ -89,10 +92,10 @@ foreach ($menu_control as $key => $value) {
                         </a>
 
                         <ul aria-expanded="false" class="collapse  first-level <?php echo $mvalue['active'] == 'active' ? 'in' : ''; ?>">
-                            <?php
-                            $submenu = $mvalue['sub_menu'];
-                            foreach ($submenu as $key => $value) {
-                                ?>
+                    <?php
+                    $submenu = $mvalue['sub_menu'];
+                    foreach ($submenu as $key => $value) {
+                        ?>
                                 <li class="sidebar-item">
                                     <a href="<?php echo $value; ?>" class="sidebar-link">
                                         <i class="mdi mdi-book-multiple"></i>
@@ -102,7 +105,7 @@ foreach ($menu_control as $key => $value) {
                             <?php } ?>
                         </ul>
                     </li>
-                <?php } ?>
+<?php } ?>
 
 
             </ul>

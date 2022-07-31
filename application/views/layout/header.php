@@ -20,7 +20,7 @@
         );
         foreach ($styleSheetArray as $title => $stylesheet) {
             ?>
-                                            <!-- ================== <?php echo $title ?> ================== -->
+                                                        <!-- ================== <?php echo $title ?> ================== -->
             <link href="<?php echo base_url(); ?><?php echo $stylesheet; ?>" rel="stylesheet" />
             <?php
         }
@@ -41,14 +41,26 @@
         <!--sweet alert-->
         <script src="<?php echo base_url(); ?>assets/sweetalert2/sweetalert2.min.js"></script>
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/sweetalert2/sweetalert2.min.css">
-
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="<?php echo base_url(); ?>assets/assets/libs/ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css"
+            />
+        <style>
+            .card.disable {
+                opacity: 0.2;
+            }
+        </style>
         <!--custom style-->
         <style>
-<?php echo HEADERCSS; ?>
+            <?php echo HEADERCSS; ?>
             span.display_index {
                 font-weight: bold;
                 font-size: 14px;
                 margin-left: 10px;
+            }
+            b, strong {
+                font-weight: bold;
             }
         </style>
         <!--custom style-->

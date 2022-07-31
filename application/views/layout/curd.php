@@ -3,14 +3,8 @@ $this->load->view('layout/header');
 $this->load->view('layout/topmenu');
 ?>
 <!-- ================== BEGIN PAGE CSS STYLE ================== -->
-<link href="<?php echo base_url(); ?>assets/plugins/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet" />
-<script src="<?php echo base_url(); ?>assets/plugins/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
-
-<link href="<?php echo base_url(); ?>assets/plugins/jquery-tag-it/css/jquery.tagit.css" rel="stylesheet" />
-<script src="<?php echo base_url(); ?>assets/plugins/jquery-tag-it/js/tag-it.min.js"></script>
-
-<link href="<?php echo base_url(); ?>assets/plugins/jquery-file-upload/css/jquery.fileupload.css" rel="stylesheet" />
-<link href="<?php echo base_url(); ?>assets/plugins/jquery-file-upload/css/jquery.fileupload-ui.css" rel="stylesheet" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/jquery-editable/css/jquery-editable.css" rel="stylesheet"/>
+<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/jquery-editable/js/jquery-editable-poshytip.min.js"></script>
 <!-- Container fluid  -->
 <!-- ============================================================== -->
 <div class="page-wrapper">
@@ -77,7 +71,7 @@ $this->load->view('layout/topmenu');
                                                         <?php
                                                     } else {
                                                         ?>
-                                                        <span  id="<?php echo $fkey; ?>" data-type="textarea" data-pk="<?php echo $vdata['id']; ?>" data-name="<?php echo $fkey; ?>" data-value="<?php echo $vdata[$fkey]; ?>" data-params ={'tablename':'<?php echo $table_name; ?>'} data-url="<?php echo site_url("LocalApi/updateCurd"); ?>" data-mode="inline" class="m-l-5 editable editable-click" tabindex="-1" > <?php echo $vdata[$fkey]; ?></span>
+                                                        <span  id="<?php echo $fkey; ?>" data-type="text" data-pk="<?php echo $vdata['id']; ?>" data-name="<?php echo $fkey; ?>" data-value="<?php echo $vdata[$fkey]; ?>" data-params ={'tablename':'<?php echo $table_name; ?>'} data-url="<?php echo site_url("Api/updateCurd"); ?>" data-mode="inline" class="m-l-5 editable editable-click" tabindex="-1" > <?php echo $vdata[$fkey]; ?></span>
 
                                                     </td>
                                                     <?php
@@ -106,8 +100,9 @@ $this->load->view('layout/topmenu');
                     <div class="modal-content">
                         <form action="#" method="post">
                             <div class="modal-header">
+                                                                <h4 class="modal-title" id="myModalLabel"><?php echo $form_title; ?></h4>
+
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel"><?php echo $form_title; ?></h4>
                             </div>
                             <div class="modal-body">
                                 <?php
@@ -182,20 +177,6 @@ $this->load->view('layout/footer');
 
 
 
-<?php
-$checklogin = $this->session->flashdata('checklogin');
-if ($checklogin['show']) {
-    ?>
-            $.gritter.add({
-                title: "<?php echo $checklogin['title']; ?>",
-                text: "<?php echo $checklogin['text']; ?>",
-                image: '<?php echo base_url(); ?>assets/emoji/<?php echo $checklogin['icon']; ?>',
-                            sticky: true,
-                            time: '',
-                            class_name: 'my-sticky-class '
-                        });
-    <?php
-}
-?>
+
                 })
 </script>

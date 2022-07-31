@@ -25,10 +25,10 @@ $islocal = false;
 
 if (strpos($baselink, '192.168')) {
     $islocal = true;
-    $baselinkmain = 'http://' . $baselinkurl . '/wol';
+    $baselinkmain = 'http://' . $baselinkurl . '/gospaladmin';
 } elseif (strpos($baselink, 'localhost')) {
     $islocal = true;
-    $baselinkmain = 'http://' . $baselinkurl . '/wol';
+    $baselinkmain = 'http://' . $baselinkurl . '/gospaladmin';
 } else {
     $baselinkmain = 'https://' . $baselinkurl . '/';
 }

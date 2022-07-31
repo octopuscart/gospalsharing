@@ -1,5 +1,5 @@
-<div class="modal fade" id="viewPhoto" tabindex="-1" role="dialog" aria-labelledby="viewPhoto">
-    <div class="modal-dialog" role="document">
+<div class="modal  fade" id="viewPhoto" tabindex="-1" role="dialog" aria-labelledby="viewPhoto">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="myModalLabel">&nbsp;</h4>
@@ -7,7 +7,7 @@
 
             </div>
             <div class="modal-body">
-                <img class="image" style="width:100%" src="<?php echo base_url(); ?>assets/collection/{{initData.selected_photo}}">
+                <img class="image" style="width:100%" src="{{initData.selected_photo}}">
             </div>
         </div>
     </div>
@@ -62,10 +62,10 @@ $(function () {
     $('#main-wrapper').AdminSettings({
         Theme: false, // this can be true or false ( true means dark and false means light ),
         Layout: 'vertical',
-        LogoBg: 'skin2', // You can change the Value to be skin1/skin2/skin3/skin4/skin5/skin6
-        NavbarBg: 'skin1', // You can change the Value to be skin1/skin2/skin3/skin4/skin5/skin6
+        LogoBg: 'skin3', // You can change the Value to be skin1/skin2/skin3/skin4/skin5/skin6
+        NavbarBg: 'skin3', // You can change the Value to be skin1/skin2/skin3/skin4/skin5/skin6
         SidebarType: 'full', // You can change it full / mini-sidebar / iconbar / overlay
-        SidebarColor: 'skin2', // You can change the Value to be skin1/skin2/skin3/skin4/skin5/skin6
+        SidebarColor: 'skin5', // You can change the Value to be skin1/skin2/skin3/skin4/skin5/skin6
         SidebarPosition: true, // it can be true / false ( true means Fixed and false means absolute )
         HeaderPosition: true, // it can be true / false ( true means Fixed and false means absolute )
         BoxedLayout: false // it can be true / false ( true means Boxed and false means Fluid )
@@ -73,7 +73,15 @@ $(function () {
 });
 
 </script>
-
+<script>
+    var loadFile = function (event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function () {
+            URL.revokeObjectURL(output.src) // free memory
+        }
+    };
+</script>
 <script>
 
     function shortData() {
@@ -85,7 +93,7 @@ $(function () {
         });
         console.log(card_indexs, card_ids);
         $("#form_card_id").val(card_ids.join(","));
- 
+
     }
     $(function () {
         shortData();
@@ -93,18 +101,31 @@ $(function () {
             revert: true,
             stop: function () {
                 shortData();
-                 $("#shoringconfirmbox").show();
+                $("#shoringconfirmbox").show();
             }
         });
-       
+
         $("ul, li").disableSelection();
-         $("#shoringconfirmbox").hide();
-        $("#cancelreindex").click(function(){
+        $("#shoringconfirmbox").hide();
+        $("#cancelreindex").click(function () {
             $("#shoringconfirmbox").hide();
         })
     });
-    
-    
+
+
+</script>
+
+<!-- This Page JS -->
+<script src="<?php echo base_url(); ?>assets/assets/libs/ckeditor_base/ckeditor.js"></script>
+
+<!-- Initialize Quill editor -->
+<script>
+
+    CKEDITOR.replace('editor1', {
+        height: 300,
+        removeButtons: 'PasteFromWord'
+    });
+
 </script>
 
 </body>

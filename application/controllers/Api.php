@@ -8,7 +8,6 @@ class Api extends REST_Controller {
     public function __construct() {
         parent::__construct();
 
-
         $this->load->library('session');
         $this->checklogin = $this->session->userdata('logged_in');
         $this->user_id = $this->session->userdata('logged_in')['login_id'];
@@ -144,6 +143,46 @@ class Api extends REST_Controller {
             return 'Message not delivered' . PHP_EOL;
         else
             return 'Message successfully delivered' . PHP_EOL;
+    }
+
+    //function for curd update
+    function updateCurd_post() {
+        $fieldname = $this->post('name');
+        $value = $this->post('value');
+        $pk_id = $this->post('pk');
+        $tablename = $this->post('tablename');
+        if ($this->checklogin) {
+            $data = array($fieldname => $value);
+            $this->db->set($data);
+            $this->db->where("id", $pk_id);
+            $this->db->update($tablename, $data);
+        }
+    }
+
+    //function for curd update
+    function curd_get($table_name) {
+        $fieldname = $this->post('name');
+        $value = $this->post('value');
+        $pk_id = $this->post('pk');
+        if ($this->checklogin) {
+            $data = array($fieldname => $value);
+            $this->db->set($data);
+            $this->db->where("id", $pk_id);
+            $this->db->update($table_name, $data);
+        }
+    }
+
+    //function for product list
+    function deleteCurd_post($table_name) {
+        $fieldname = $this->post('name');
+        $value = $this->post('value');
+        $pk_id = $this->post('pk');
+        if ($this->checklogin) {
+            $data = array($fieldname => $value);
+            $this->db->set($data);
+            $this->db->where("id", $pk_id);
+            $this->db->update($table_name, $data);
+        }
     }
 
     function getVisitor($title) {
