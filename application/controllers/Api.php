@@ -207,6 +207,11 @@ class Api extends REST_Controller {
         $result = $this->Story_model->storyLanguageList(1);
         $this->response($result);
     }
+    
+    function getContent_get() {
+        $result =  $this->db->get("story_content")->result_array();
+        $this->response($result);
+    }
 
 }
 
