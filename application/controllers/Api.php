@@ -9,8 +9,8 @@ class Api extends REST_Controller {
         parent::__construct();
 
         $this->load->library('session');
-        $this->checklogin = $this->session->userdata('logged_in');
-        $this->user_id = $this->session->userdata('logged_in')['login_id'];
+//        Story_model
+        $this->load->model('Story_model');
     }
 
     public function index() {
@@ -197,50 +197,9 @@ class Api extends REST_Controller {
         $this->db->insert('system_log', $orderlog);
     }
 
-    function getCollectionSingle_get($token, $id) {
-        $this->db->where("id", $id);
-        $query = $this->db->get("set_collection");
-        $result = $query->row_array();
-        $title = $result["title"];
-        $this->getVisitor("Collection $title");
+    function getImageData_get() {
+        $result = $this->Story_model->storyList();
         $this->response($result);
-    }
-
-    function getCollection_get($token) {
-        $query = $this->db->get("set_collection");
-        $result = $query->result_array();
-        $this->getVisitor("Collections List");
-        $this->response($result);
-    }
-
-    function getCollectionCard_get($token, $collection_id) {
-        $this->db->where("collection_id", $collection_id);
-        $query = $this->db->order_by("display_index")->get("set_collection_card");
-        $result = $query->result_array();
-        $this->getVisitor("Cards ($collection_id) ");
-        $this->response($result);
-    }
-
-    function accessCollection_post() {
-        $responsedata = array("status" => "100", "message" => "Collection code is wrong.");
-        $collection_id = $this->post("collection_id");
-        $access_code = $this->post("access_code");
-        $this->db->where("id", $collection_id);
-        $this->db->where("access_code", $access_code);
-        $query = $this->db->get("set_collection");
-        $result = $query->row_array();
-        if ($result) {
-            $responsedata["status"] = "200";
-            $responsedata["message"] = "Collection code varified.";
-        }
-        $message = $responsedata["message"];
-        $this->getVisitor("Cards $message ");
-        $this->response($responsedata);
-    }
-
-    function getCardQr_get($card_code) {
-        $this->load->library('phpqr');
-        $this->phpqr->showcode($card_code);
     }
 
 }
