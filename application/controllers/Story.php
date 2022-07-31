@@ -73,7 +73,7 @@ class Story extends CI_Controller {
             $is_update = true;
         }
         $data["imageobj"] = $imageobj;
-        $languagelistt = $this->Story_model->storyLanguageList();
+        $languagelistt = $this->Story_model->storyLanguageList(1);
         $languagelist = array();
         $lenguage_id = 1;
         if ($languagelistt) {
@@ -117,7 +117,7 @@ class Story extends CI_Controller {
     // add content 
     function viewStory($story_id, $lenguage_id = 0) {
         $storyobj = $this->Story_model->singleStory($story_id);
-        $languagelistt = $this->Story_model->storyLanguageList();
+        $languagelistt = $this->Story_model->storyLanguageList(1);
         $languagelist = array();
         if ($languagelistt) {
             foreach ($languagelistt as $key => $value) {
@@ -176,6 +176,7 @@ class Story extends CI_Controller {
             "title" => array("title" => "Title", "width" => "300px", "required" => true, "place_holder" => "Title", "type" => "text", "default" => ""),
             "display_index" => array("title" => "Index", "width" => "300px", "required" => true, "place_holder" => "Index", "type" => "number", "default" => ""),
             "is_default" => array("title" => "Default", "width" => "300px", "required" => false, "place_holder" => "Type Yes or No", "type" => "text", "default" => ""),
+            "is_active" => array("title" => "Is Active", "width" => "300px", "required" => true, "place_holder" => "Is Active 0/1", "type" => "number", "default" => ""),
         );
         $data['form_attr'] = $form_attr;
         $rdata = $this->Curd_model->curdForm($data);
@@ -184,7 +185,7 @@ class Story extends CI_Controller {
 
     //viewStoryList
     public function appViewStory($lenguage_id = 0) {
-        $languagelistt = $this->Story_model->storyLanguageList();
+        $languagelistt = $this->Story_model->storyLanguageList(1);
         $languagelist = array();
         if ($languagelistt) {
             foreach ($languagelistt as $key => $value) {

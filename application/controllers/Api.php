@@ -11,6 +11,7 @@ class Api extends REST_Controller {
         $this->load->library('session');
 //        Story_model
         $this->load->model('Story_model');
+        $this->checklogin = $this->session->userdata('logged_in');
     }
 
     public function index() {
@@ -201,8 +202,8 @@ class Api extends REST_Controller {
         $result = $this->Story_model->storyList();
         $this->response($result);
     }
-    
-    function getLanguage_get(){
+
+    function getLanguage_get() {
         $result = $this->Story_model->storyLanguageList(1);
         $this->response($result);
     }
