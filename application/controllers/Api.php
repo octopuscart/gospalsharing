@@ -207,9 +207,19 @@ class Api extends REST_Controller {
         $result = $this->Story_model->storyLanguageList(1);
         $this->response($result);
     }
-    
+
     function getContent_get() {
-        $result =  $this->db->get("story_content")->result_array();
+        $result = $this->db->get("story_content")->result_array();
+        $this->response($result);
+    }
+
+    function initialSetup_get() {
+        $result = [
+            array("attr_type" => "story_language", "attr_value" => "1",),
+            array("attr_type" => "font_size", "attr_value" => "20",),
+            array("attr_type" => "app_version_android", "attr_value" => "1.0.0",),
+            array("attr_type" => "app_version_ios", "attr_value" => "1.0.0",),
+        ];
         $this->response($result);
     }
 
