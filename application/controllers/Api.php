@@ -215,6 +215,7 @@ class Api extends REST_Controller {
 
     function initialSetup_get() {
         $result = [
+            array("attr_type" => "data_version", "attr_value" => "1",),
             array("attr_type" => "review_status", "attr_value" => "0",),
             array("attr_type" => "story_language", "attr_value" => "1",),
             array("attr_type" => "font_size", "attr_value" => "20",),
