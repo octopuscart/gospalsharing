@@ -214,14 +214,7 @@ class Api extends REST_Controller {
     }
 
     function initialSetup_get() {
-        $result = [
-            array("attr_type" => "data_version", "attr_value" => "1",),
-            array("attr_type" => "review_status", "attr_value" => "0",),
-            array("attr_type" => "story_language", "attr_value" => "1",),
-            array("attr_type" => "font_size", "attr_value" => "20",),
-            array("attr_type" => "app_version_android", "attr_value" => "1.0.0",),
-            array("attr_type" => "app_version_ios", "attr_value" => "1.0.0",),
-        ];
+        $result = $this->db->get("configuration_attr")->result_array();
         $this->response($result);
     }
 
