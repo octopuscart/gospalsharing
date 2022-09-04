@@ -11,7 +11,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url(); ?>assets/assets/images/icon.png">
-    <title>WOL Admin</title>
+    <title><?php echo SITE_NAME ?> | Admin Panel</title>
     <!-- Custom CSS -->
     <link href="<?php echo base_url(); ?>assets/dist/css/style.min.css" rel="stylesheet">
      <link href="<?php echo base_url(); ?>assets/gritter/css/jquery.gritter.css" rel="stylesheet" />
