@@ -82,6 +82,7 @@ $this->load->view('layout/topmenu');
 
                                                     <div class="el-card-item2 text-center" >
                                                         <div class="btn btn-group " style="    display: block;">
+                                                            <?php echo $value["display_index"]; ?>
                                                             <a class="btn btn-md btn-dark text-light" href="<?php echo site_url("Story/viewStory/" . $value["id"]); ?>"><i class="fa fa-eye"></i> View</a>
 
                                                             <a class="btn btn-md btn-warning text-light" href="<?php echo site_url("Story/addImage/" . $value["id"]); ?>"><i class="fa fa-edit"></i></a>
