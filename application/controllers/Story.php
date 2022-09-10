@@ -19,13 +19,14 @@ class Story extends CI_Controller {
         $storylist = $this->Story_model->storyList();
         $data["storylist"] = $storylist;
         $display_index = count($storylist) + 1;
-        $imageobj = array("image" => base_url() . "assets/uploads/default.jpg", "button_title" => "Add Story Image");
+        $imageobj = array("image" => base_url() . "assets/uploads/default.jpg", "button_title" => "Add Story Image", "display_index"=>$display_index);
         $storyobj = $this->Story_model->singleStory($story_id);
         $is_update = false;
         if ($storyobj) {
             $imageobj["image"] = $storyobj["image"];
             $imageobj["button_title"] = "Update Image";
             $is_update = true;
+            $imageobj["display_index"] = $imageobj["display_index"];
         }
         $data["imageobj"] = $imageobj;
         if (isset($_POST['submit_data'])) {
@@ -37,7 +38,7 @@ class Story extends CI_Controller {
             $imageArray = array(
                 "image" => $imagename,
                 "timestamp" => $timestampobj->getTimestamp(),
-                "display_index" => $display_index
+                "display_index" => $imageobj["display_index"]
             );
             if ($is_update) {
                 $this->db->set($imageArray);
