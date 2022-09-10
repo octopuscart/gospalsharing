@@ -36,10 +36,11 @@ $this->load->view('layout/topmenu');
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">Display Index</span>
                                                         </div>
-                                                        <div>
-                                                            <input type="number" class="form-control" name='display_index' value="<?php echo $imageobj['display_index']; ?>">
-                                                        </div>
+                                                       
+                                                            <input type="number" class="form-control" name='display_index' value="<?php echo $imageobj['display_index']; ?>" style="width: 150px;">
+                                                       
                                                     </div>
+                                                    <hr/>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">Upload</span>
