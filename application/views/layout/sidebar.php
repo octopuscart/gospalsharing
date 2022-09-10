@@ -37,6 +37,7 @@ $setting_menu = array(
     "active" => "",
     "sub_menu" => array(
         "System Log" => site_url("Services/systemLogReport"),
+        "App Settings"=>site_url("Services/appSettings"),
     ),
 );
 
