@@ -34,6 +34,14 @@ $this->load->view('layout/topmenu');
                                                     <label class="control-label col-form-label">Set Story Image</label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
+                                                            <span class="input-group-text">Display Index</span>
+                                                        </div>
+                                                        <div>
+                                                            <input type="number" class="form-control" name='display_index' value="<?php echo $imageobj['display_index']; ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
                                                             <span class="input-group-text">Upload</span>
                                                         </div>
                                                         <div class="custom-file">
@@ -75,7 +83,7 @@ $this->load->view('layout/topmenu');
                                                         <div class="btn btn-group " style="    display: block;">
                                                             <a class="btn btn-md btn-dark text-light" href="<?php echo site_url("Story/viewStory/" . $value["id"]); ?>"><i class="fa fa-eye"></i> View</a>
 
-                                                            <a class="btn btn-md btn-warning text-light" href="<?php echo site_url("Story/addStory/" . $value["id"]); ?>"><i class="fa fa-edit"></i></a>
+                                                            <a class="btn btn-md btn-warning text-light" href="<?php echo site_url("Story/addImage/" . $value["id"]); ?>"><i class="fa fa-edit"></i></a>
                                                             <button type="button" class="btn btn-danger" ng-click="confirmDelete(<?php echo $value["id"]; ?>)"><i class="fa fa-trash"></i></button>
 
                                                         </div>
